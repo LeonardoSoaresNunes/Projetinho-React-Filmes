@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './style.css'
 
 
 class Filme extends Component {
@@ -10,7 +11,7 @@ class Filme extends Component {
         }
     }
     componentDidMount() {
-        const {id} = this.props.match.params;
+        const { id } = this.props.match.params;
         let url = `https://sujeitoprogramador.com/r-api/?api=filmes/${id}`;
         fetch(url)
             .then((r) => r.json())
@@ -24,13 +25,13 @@ class Filme extends Component {
     render() {
         return (
 
-            <div>
-
+            <div className="filme-info">
                 <h1>{this.state.filme.nome}</h1>
                 <img src={this.state.filme.foto} />
-                <h3>
-                   Sinopse
-                </h3>
+                {this.state.filme.length !== 0 &&
+
+                    <h3>sinopse</h3>
+                }
                 {this.state.filme.sinopse}
 
             </div>
